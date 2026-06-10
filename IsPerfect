@@ -1,0 +1,49 @@
+// =========================
+// תרגיל 5 – מספר מושלם
+// מספר שסכום מחלקיו (ללא עצמו) שווה למספר.
+// =========================
+
+// בודק האם מספר הוא מושלם.
+public static bool IsPerfect(int num)
+{
+    int sum = 0;
+
+    if (num <= 2)
+        return false;
+
+    // מעבר על כל המחלקים האפשריים
+    for (int i = 1; i < num; i++)
+    {
+        if (num % i == 0)
+        {
+            sum += i;
+        }
+    }
+
+    return sum == num;
+}
+
+// מדפיס את כל המספרים המושלמים בטווח.
+public static void ThePerfects(int low, int high)
+{
+    for (int i = low; i <= high; i++)
+    {
+        if (IsPerfect(i))
+        {
+            Console.WriteLine(i);
+        }
+    }
+}
+
+// בודק האם קיים מספר מושלם אי זוגי בתחום.
+public static bool NoOdd()
+{
+    // מעבר רק על אי זוגיים
+    for (int i = 3; i < 999999; i += 2)
+    {
+        if (IsPerfect(i))
+            return false;
+    }
+
+    return true;
+}
