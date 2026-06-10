@@ -1,0 +1,45 @@
+// =========================
+// תרגיל 4 – מספר נרקיסיסטי
+// מספר שסכום ספרותיו בחזקת מספר הספרות שווה למספר עצמו.
+// =========================
+
+// בודק האם מספר הוא נרקיסיסטי.
+public static bool IsNarc(int num)
+{
+    int temp = num;
+    int countDig = 0;
+    int sum = 0;
+
+    // ספירת כמות הספרות
+    while (temp > 0)
+    {
+        countDig++;
+        temp /= 10;
+    }
+
+    temp = num;
+
+    // חישוב סכום הספרות בחזקת מספר הספרות
+    while (temp > 0)
+    {
+        int digit = temp % 10;
+
+        sum += (int)Math.Pow(digit, countDig);
+
+        temp /= 10;
+    }
+
+    return sum == num;
+}
+
+// מדפיס את כל המספרים הנרקיסיסטיים עד n.
+public static void TheNarc(int n)
+{
+    for (int i = 1; i <= n; i++)
+    {
+        if (IsNarc(i))
+        {
+            Console.WriteLine(i);
+        }
+    }
+}
