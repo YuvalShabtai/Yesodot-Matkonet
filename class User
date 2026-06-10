@@ -1,0 +1,48 @@
+public class User
+{
+    private string name;
+    private int id;
+    private int[] friends;
+
+    public string GetName() => name;
+    public int GetId() => id;
+    public int[] GetFriends() => friends;
+
+    public int Mutual(User other)
+    {
+        int count = 0;
+
+        int[] myFriends = this.friends;
+        int[] otherFriends = other.GetFriends();
+
+        for (int i = 0; i < myFriends.Length; i++)
+        {
+            for (int j = 0; j < otherFriends.Length; j++)
+            {
+                if (myFriends[i] == otherFriends[j])
+                {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+}
+
+public class SocialNetwork
+{
+    private User[] users; 
+    public bool ExactOne(User other)
+    {
+        
+        for(int i = 0;i < users.Length;i++)
+        {
+            if (users[i].Mutual(other) == 1)
+            {
+                return true; 
+            }
+        }
+        return false; 
+    }
+}
