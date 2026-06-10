@@ -1,0 +1,29 @@
+// =========================
+// תרגיל 1 – משחק קליעה למטרה
+// בודק האם השחקן הצליח לפי ממוצע, רוב יריות או פגיעה של 10.
+// =========================
+
+// קולט את ניקוד כל היריות ומחזיר האם השחקן הצליח.
+public static bool Success(int num)
+{
+    double sum = 0;
+    int countSix = 0;
+    bool hasTen = false;
+
+    for (int i = 0; i < num; i++)
+    {
+        int point = int.Parse(Console.ReadLine());
+
+        sum += point;
+
+        // ספירת יריות עם 6 נקודות ומעלה
+        if (point >= 6)
+            countSix++;
+
+        // בדיקה האם הייתה פגיעה של 10
+        if (point == 10)
+            hasTen = true;
+    }
+
+    return (sum / num > 5.0 || countSix > num / 2 || hasTen);
+}
