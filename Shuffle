@@ -1,0 +1,40 @@
+// =========================
+// תרגיל 7 – ערבול מערך
+// מבצע 30 החלפות אקראיות בין תאים במערך.
+// =========================
+
+// מערבל את המערך ומדפיס אותו.
+public static void Shuffle(int[] arr)
+{
+    Random rnd = new Random();
+
+    int temp = 0;
+
+    for (int i = 0; i < 30; i++)
+    {
+        // הגרלת שני אינדקסים
+        int firstIndex = rnd.Next(0, arr.Length);
+        int secondIndex = rnd.Next(0, arr.Length);
+
+        // אם האינדקסים שונים מבצעים החלפה
+        if (firstIndex != secondIndex)
+        {
+            temp = arr[firstIndex];
+
+            arr[firstIndex] = arr[secondIndex];
+
+            arr[secondIndex] = temp;
+        }
+        else
+        {
+            // ההגרלה לא נחשבת
+            i--;
+        }
+    }
+
+    // הדפסת המערך לאחר הערבול
+    for (int i = 0; i < arr.Length; i++)
+    {
+        Console.WriteLine(arr[i]);
+    }
+}
