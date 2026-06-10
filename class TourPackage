@@ -1,0 +1,68 @@
+public class TourPackage
+{
+    private int id;
+    private int price;
+    private int maxTime;
+    private int maxData;
+    private int extra;
+
+    public TourPackage(int id, int price, int maxTime, int maxData)
+    {
+        this.id = id;
+        this.price = price;
+        this.maxTime = maxTime;
+        this.maxData = maxData;
+        this.extra = 0;
+    }
+    public int GetId() => id;
+    public int GetPrice() => price;
+    public int GetMaxTime() => maxTime;
+    public int GetMaxData() => maxData;
+    public int GetExtra() => extra;
+
+    public void SetExtra(int time , int data)
+    {
+        int extraTime = 0;
+        int extraData = 0;
+        if(time > maxTime)
+        {
+            extraTime = time - maxTime; 
+        }
+        if(data > maxData)
+        {
+            extraData = data - maxData;
+        }
+        this.extra = extraTime + (extraData * 2);
+
+    }
+}
+internal class Program1
+{
+    public static int Calculate(TourPackage[] packages)
+    {
+        int counter = 0;
+        for(int i = 0; i < packages.Length ; i++)
+        {
+            if(packages[i].GetExtra() > 0)
+            {
+                counter++;
+            }
+        }
+        return counter;
+    }
+
+    public static int[] Customers(TourPackage[] packages)
+    {
+        int index = 0;
+        int[] arr = new int[Calculate(packages)];
+        for(int i = 0;i < packages.Length;i++)
+        {
+            if (packages[i].GetExtra() > 0)
+            {
+                arr[index] = packages[i].GetId();
+                index++; 
+            }
+        }
+        return arr;
+    }
+}
