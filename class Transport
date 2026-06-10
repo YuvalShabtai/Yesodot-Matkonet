@@ -1,0 +1,64 @@
+public class Transport
+{
+    private string name;
+    private bool toSchool;
+    private int num;
+    private int day;
+
+    public Transport(string name, int num, int day)
+    {
+        this.name = name;
+        this.toSchool = true;
+        this.num = num;
+        this.day = day;
+    }
+    public Transport(int num)
+    {
+        this.toSchool = false;
+        this.name = "Aviv";
+        this.day = 4;
+        if (num >= 1 && num <= 50)
+        {
+            this.num = num;
+        }
+        else
+        {
+            this.num = 1;
+
+        }
+    }
+    public string GetName() => name;
+    public bool GetToSchool() => toSchool;
+    public int GetNum() => num;
+    public int GetDay() => day;
+}
+internal class Program
+{
+    public static int DayReport(Transport[] arr, int day, bool forward)
+    {
+        int sum = 0;
+
+        for (int i = 0; i < arr.Length; i++)
+        {
+            if (arr[i].GetToSchool() == forward &&
+                arr[i].GetDay() == day)
+            {
+                sum += arr[i].GetNum();
+            }
+        }
+
+        return sum;
+    }
+
+    public static void MoreForward(Transport[] arr)
+    {
+        for(int i =1; i<=6; i++)
+        {
+            if(DayReport(arr,i,true) > DayReport(arr,i,false))
+            {
+                Console.WriteLine(i);
+            }
+        }
+    }
+}
+
