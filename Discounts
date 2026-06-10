@@ -1,0 +1,30 @@
+// =========================
+// תרגיל 2 – הנחות לתושבי העיר
+// מחזיר קוד תלת ספרתי המייצג זכאות להנחות.
+// =========================
+
+// בונה את מספר ההנחות לפי גיל, מספר ילדים ומקום עבודה.
+public static int Discounts(int age, int num, bool city)
+{
+    string stringToReturn = "";
+
+    // ספרת הארנונה
+    if (age >= 70)
+        stringToReturn = "1";
+    else
+        stringToReturn = "2";
+
+    // ספרת גני הילדים
+    if (num >= 3)
+        stringToReturn += "1";
+    else
+        stringToReturn += "2";
+
+    // ספרת החניה
+    if (city)
+        stringToReturn += "1";
+    else
+        stringToReturn += "2";
+
+    return int.Parse(stringToReturn);
+}
